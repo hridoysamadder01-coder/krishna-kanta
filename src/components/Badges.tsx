@@ -1,0 +1,73 @@
+import type { SourceReference, VerificationStatus } from "@/lib/types";
+import type { Locale } from "@/lib/i18n";
+import { ui } from "@/content/site";
+import { t } from "@/lib/i18n";
+import { cn } from "@/lib/utils";
+
+/**
+ * VerificationBadge — quiet archival metadata, never a loud UI chip.
+ * Only "verified" and "editorial" statuses are ever rendered publicly.
+ */
+export function VerificationBadge({
+  status,
+  locale,
+  className,
+}: {
+  status: VerificationStatus;
+  locale: Locale;
+  className?: string;
+}) {
+  if (status !== "verified" && status !== "editorial") return null;
+  const label = status === "verified" ? ui.verifiedLabel : ui.editorialLabel;
+  return (
+    <span
+      className={cn(
+        "tracking-label inline-flex items-center gap-2 text-[0.62rem] uppercase",
+        status === "verified" ? "text-gold" : "text-stone",
+        className,
+      )}
+    >
+      <span
+        aria-hidden="true"
+        className={cn(
+          "inline-block h-1 w-1 rounded-full",
+          status === "verified" ? "bg-gold" : "bg-stone",
+        )}
+      />
+      {t(label, locale)}
+    </span>
+  );
+}
+
+/** SourceBadge — quiet source attribution for verified records. */
+export function SourceBadge({
+  source,
+  locale,
+  className,
+}: {
+  source: SourceReference;
+  locale: Locale;
+  className?: string;
+}) {
+  const inner = (
+    <>
+      {t(ui.sourceLabel, locale)}: {source.label}
+    </>
+  );
+  return (
+    <span className={cn("text-xs text-stone", className)}>
+      {source.url ? (
+        <a
+          href={source.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="editorial-link"
+        >
+          {inner}
+        </a>
+      ) : (
+        inner
+      )}
+    </span>
+  );
+}

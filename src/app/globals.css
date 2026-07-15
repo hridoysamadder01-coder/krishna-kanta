@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink: #11110f;
+  --charcoal: #181816;
+  --coal-soft: #24231f;
+  --ivory: #f2eee4;
+  --ivory-deep: #e6dfd1;
+  --paper: #faf7ef;
+  --gold: #b89a5d;
+  --gold-muted: #8c7448;
+  --stone: #999283;
+  --line-dark: rgba(255, 255, 255, 0.14);
+  --line-light: rgba(17, 17, 15, 0.14);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background-color: var(--ink);
+  color: var(--ivory);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* Bengali script needs taller leading; conjuncts clip at tight line heights. */
+:lang(bn) {
+  line-height: 1.75;
+}
+:lang(bn) h1,
+:lang(bn) h2,
+:lang(bn) h3 {
+  line-height: 1.35;
+}
+:lang(bn) .tracking-label {
+  letter-spacing: 0.08em;
+}
+
+::selection {
+  background-color: var(--gold);
+  color: var(--ink);
+}
+
+/* Visible focus for keyboard users */
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Film-grain texture — pure CSS, no assets, very low cost */
+.film-grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+  z-index: 1;
+}
+
+/* Monochrome archival image treatment */
+.img-mono {
+  filter: grayscale(1) contrast(1.04) brightness(0.96);
+}
+
+/* Fine gold rule */
+.gold-rule {
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold), rgba(184, 154, 93, 0.15));
+}
+
+/* Small uppercase editorial label */
+.tracking-label {
+  letter-spacing: 0.22em;
+}
+
+/* Editorial link underline */
+.editorial-link {
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  transition: background-size 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  padding-bottom: 2px;
+}
+.editorial-link:hover,
+.editorial-link:focus-visible {
+  background-size: 100% 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .editorial-link {
+    transition: none;
+  }
+}
