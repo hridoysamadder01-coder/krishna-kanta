@@ -27,8 +27,8 @@ html {
 }
 
 body {
-  background-color: var(--ink);
-  color: var(--ivory);
+  background-color: var(--paper);
+  color: var(--ink);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
@@ -41,10 +41,20 @@ body {
 :lang(bn) h1,
 :lang(bn) h2,
 :lang(bn) h3 {
-  line-height: 1.35;
+  line-height: 1.4;
 }
-:lang(bn) .tracking-label {
-  letter-spacing: 0.08em;
+/* Never letter-space Bengali: tracking visually breaks conjunct clusters. */
+:lang(bn) .tracking-label,
+:lang(bn) [class*="tracking-"] {
+  letter-spacing: normal;
+}
+/* Tiro Bangla ships one true weight — block synthetic bold, which smears
+   Bengali conjuncts into the "broken glyph" look. */
+:lang(bn) h1,
+:lang(bn) h2,
+:lang(bn) h3,
+:lang(bn) .font-display {
+  font-synthesis: none;
 }
 
 ::selection {

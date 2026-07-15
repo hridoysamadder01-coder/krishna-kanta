@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Inter, Noto_Sans_Bengali, Noto_Serif_Bengali } from "next/font/google";
+import { Cormorant_Garamond, Hind_Siliguri, Inter, Tiro_Bangla } from "next/font/google";
 import { siteConfig } from "@/content/site";
 import "./globals.css";
 
@@ -16,16 +16,19 @@ const body = Inter({
   display: "swap",
 });
 
-const displayBn = Noto_Serif_Bengali({
+// Tiro Bangla: elegant editorial Bengali serif with impeccable conjunct
+// shaping (single 400 weight — headings render it cleanly).
+const displayBn = Tiro_Bangla({
   subsets: ["bengali"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400"],
   variable: "--font-display-bn",
   display: "swap",
 });
 
-const bodyBn = Noto_Sans_Bengali({
+// Hind Siliguri: clean, highly readable Bengali sans for body text.
+const bodyBn = Hind_Siliguri({
   subsets: ["bengali"],
-  weight: ["400", "500"],
+  weight: ["400", "500", "600"],
   variable: "--font-body-bn",
   display: "swap",
 });

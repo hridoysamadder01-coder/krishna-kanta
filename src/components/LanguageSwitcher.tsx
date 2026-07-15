@@ -28,12 +28,12 @@ export function LanguageSwitcher({
     <nav aria-label={t(ui.languageSwitchLabel, locale)} className={cn("flex items-center", className)}>
       {options.map((option, i) => (
         <span key={option.code} className="flex items-center">
-          {i > 0 && <span aria-hidden="true" className="mx-2 h-3 w-px bg-line-dark bg-white/20" />}
+          {i > 0 && <span aria-hidden="true" className="mx-2 h-3 w-px bg-ink/20" />}
           {option.code === locale ? (
             <span
               lang={option.lang}
               aria-current="true"
-              className="text-xs font-medium uppercase tracking-widest text-gold"
+              className="text-xs font-medium uppercase tracking-widest text-gold-muted"
             >
               {option.label}
             </span>
@@ -42,7 +42,7 @@ export function LanguageSwitcher({
               href={switchLocalePath(pathname, option.code)}
               lang={option.lang}
               onClick={onNavigate}
-              className="editorial-link text-xs uppercase tracking-widest text-ivory/70 hover:text-ivory"
+              className="editorial-link text-xs uppercase tracking-widest text-ink/60 hover:text-ink"
             >
               {option.label}
             </Link>

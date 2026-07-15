@@ -11,8 +11,8 @@ import { MobileMenu } from "./MobileMenu";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 
 /**
- * Global header: transparent over the hero, settling into a subtle
- * charcoal glass surface once the visitor scrolls.
+ * Global header: transparent over the light hero, settling into a subtle
+ * warm paper glass surface once the visitor scrolls.
  */
 export function SiteHeader({ locale }: { locale: Locale }) {
   const [scrolled, setScrolled] = useState(false);
@@ -32,7 +32,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
       className={cn(
         "fixed inset-x-0 top-0 z-40 transition-colors duration-500",
         scrolled
-          ? "border-b border-white/10 bg-charcoal/85 backdrop-blur-md"
+          ? "border-b border-ink/10 bg-paper/85 backdrop-blur-md"
           : "border-b border-transparent bg-transparent",
       )}
     >
@@ -42,10 +42,10 @@ export function SiteHeader({ locale }: { locale: Locale }) {
           className="group flex min-w-0 flex-col justify-center"
           aria-label={siteConfig.personName}
         >
-          <span className="font-display text-base font-semibold tracking-[0.18em] text-ivory sm:text-lg">
+          <span className="font-display text-base font-semibold tracking-[0.18em] text-ink sm:text-lg">
             KRISHNA&nbsp;KANTA
           </span>
-          <span className="tracking-label hidden text-[0.55rem] uppercase text-stone sm:block">
+          <span className="tracking-label hidden text-[0.55rem] uppercase text-ink/50 sm:block">
             {t(ui.brandTagline, locale)}
           </span>
         </Link>
@@ -59,7 +59,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
                 aria-current={isActive(item.href) ? "page" : undefined}
                 className={cn(
                   "editorial-link text-[0.8rem] uppercase tracking-[0.16em]",
-                  isActive(item.href) ? "text-gold" : "text-ivory/75 hover:text-ivory",
+                  isActive(item.href) ? "text-gold-muted" : "text-ink/70 hover:text-ink",
                 )}
               >
                 {t(item.label, locale)}
@@ -71,7 +71,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
 
           <Link
             href={localePath(locale, "/story")}
-            className="hidden items-center border border-gold/50 px-5 py-2 text-[0.72rem] uppercase tracking-[0.16em] text-gold transition-colors duration-300 hover:bg-gold hover:text-ink xl:inline-flex"
+            className="hidden items-center border border-gold-muted px-5 py-2 text-[0.72rem] uppercase tracking-[0.16em] text-gold-muted transition-colors duration-300 hover:bg-gold-muted hover:text-paper xl:inline-flex"
           >
             {t(ui.exploreJourney, locale)}
           </Link>

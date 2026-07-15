@@ -61,7 +61,7 @@ export default async function LocaleLayout({
   const locale: Locale = raw;
 
   return (
-    <div lang={htmlLang[locale]} className="flex min-h-svh flex-col bg-ink text-ivory">
+    <div lang={htmlLang[locale]} className="flex min-h-svh flex-col bg-paper text-ink">
       <SetHtmlLang lang={htmlLang[locale]} />
       <a
         href="#main-content"

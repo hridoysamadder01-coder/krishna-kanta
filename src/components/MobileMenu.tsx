@@ -12,8 +12,8 @@ import { cn } from "@/lib/utils";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 
 /**
- * Full-screen editorial mobile menu: large typography, scroll lock,
- * escape-to-close, focus management, active page indicator.
+ * Full-screen editorial mobile menu on warm paper: large typography,
+ * scroll lock, escape-to-close, focus management, active page indicator.
  */
 export function MobileMenu({ locale }: { locale: Locale }) {
   const [open, setOpen] = useState(false);
@@ -54,7 +54,7 @@ export function MobileMenu({ locale }: { locale: Locale }) {
         aria-expanded={open}
         aria-haspopup="dialog"
         aria-label={t(ui.openMenu, locale)}
-        className="flex h-11 w-11 items-center justify-center text-ivory"
+        className="flex h-11 w-11 items-center justify-center text-ink"
       >
         <Menu className="h-6 w-6" aria-hidden="true" />
       </button>
@@ -65,14 +65,14 @@ export function MobileMenu({ locale }: { locale: Locale }) {
             role="dialog"
             aria-modal="true"
             aria-label={t(ui.mainNavigation, locale)}
-            className="fixed inset-0 z-50 flex flex-col bg-ink"
+            className="fixed inset-0 z-50 flex flex-col bg-paper text-ink"
             initial={reduce ? { opacity: 1 } : { opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={reduce ? { opacity: 0 } : { opacity: 0 }}
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="flex h-16 items-center justify-between px-5">
-              <span className="font-display text-base font-semibold tracking-[0.18em] text-ivory">
+              <span className="font-display text-base font-semibold tracking-[0.18em] text-ink">
                 KRISHNA&nbsp;KANTA
               </span>
               <button
@@ -80,7 +80,7 @@ export function MobileMenu({ locale }: { locale: Locale }) {
                 type="button"
                 onClick={close}
                 aria-label={t(ui.closeMenu, locale)}
-                className="flex h-11 w-11 items-center justify-center text-ivory"
+                className="flex h-11 w-11 items-center justify-center text-ink"
               >
                 <X className="h-6 w-6" aria-hidden="true" />
               </button>
@@ -100,10 +100,10 @@ export function MobileMenu({ locale }: { locale: Locale }) {
                     aria-current={isActive(item.href) ? "page" : undefined}
                     className={cn(
                       "font-display block py-3 text-[clamp(1.8rem,7vw,2.6rem)] font-medium leading-tight",
-                      isActive(item.href) ? "text-gold" : "text-ivory hover:text-gold",
+                      isActive(item.href) ? "text-gold-muted" : "text-ink hover:text-gold-muted",
                     )}
                   >
-                    <span className="tracking-label mr-4 align-middle text-[0.6rem] text-stone">
+                    <span className="tracking-label mr-4 align-middle text-[0.6rem] text-ink/40">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     {t(item.label, locale)}
@@ -111,7 +111,7 @@ export function MobileMenu({ locale }: { locale: Locale }) {
                 </motion.div>
               ))}
 
-              <div className="mt-10 border-t border-white/10 pt-6">
+              <div className="mt-10 border-t border-ink/10 pt-6">
                 <LanguageSwitcher locale={locale} onNavigate={close} />
               </div>
             </nav>

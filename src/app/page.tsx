@@ -16,16 +16,16 @@ export default function RootRedirect() {
   }, [router]);
 
   return (
-    <main className="flex min-h-svh flex-col items-center justify-center gap-6 bg-ink px-6 text-center">
-      <p className="font-display text-2xl font-semibold tracking-[0.18em] text-ivory">
+    <main className="flex min-h-svh flex-col items-center justify-center gap-6 bg-paper px-6 text-center text-ink">
+      <p className="font-display text-2xl font-semibold tracking-[0.18em] text-ink">
         KRISHNA&nbsp;KANTA
       </p>
-      <p className="text-sm text-stone">
-        <Link href="/en/" className="editorial-link text-gold">
+      <p className="text-sm text-ink/60">
+        <Link href="/en/" className="editorial-link text-gold-muted">
           English
         </Link>
-        <span className="mx-3 text-stone/50">·</span>
-        <Link href="/bn/" lang="bn" className="editorial-link text-gold">
+        <span className="mx-3 text-ink/30">·</span>
+        <Link href="/bn/" lang="bn" className="editorial-link text-gold-muted">
           বাংলা
         </Link>
       </p>

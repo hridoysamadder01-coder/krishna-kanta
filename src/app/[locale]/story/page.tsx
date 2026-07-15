@@ -55,15 +55,14 @@ export default async function StoryPage({ params }: { params: Promise<{ locale: 
       />
 
       {/* Opening portrait */}
-      <section className="bg-ink pb-24">
+      <section className="bg-ivory-deep pb-24">
         <div className="mx-auto max-w-wide px-5 sm:px-8">
           <Reveal>
             <PortraitFigure
               image={founder.officePortrait}
               locale={locale}
               sizes="(max-width: 1024px) 100vw, 60vw"
-              className="mx-auto aspect-[4/5] max-w-2xl border border-white/10"
-              overlay
+              className="mx-auto aspect-[4/5] max-w-2xl border border-ink/10"
             />
           </Reveal>
         </div>
