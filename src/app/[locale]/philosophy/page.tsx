@@ -61,29 +61,29 @@ export default async function PhilosophyPage({ params }: { params: Promise<{ loc
         }
       />
 
-      <section className="bg-charcoal py-24 sm:py-32">
+      <section className="bg-ivory py-24 text-ink sm:py-32">
         <div className="mx-auto max-w-wide px-5 sm:px-8">
-          <ol role="list" className="grid gap-px border border-white/10 bg-white/10 md:grid-cols-2">
+          <ol role="list" className="grid gap-px border border-ink/10 bg-ink/10 md:grid-cols-2">
             {philosophySections.map((section, i) => {
               const related = publicTimeline.find((entry) => entry.id === section.relatedTimelineId);
               return (
-                <Reveal as="li" key={section.id} delay={(i % 2) * 0.08} className="bg-charcoal p-8 sm:p-12">
-                  <p className="font-display text-sm text-gold" aria-hidden="true">
+                <Reveal as="li" key={section.id} delay={(i % 2) * 0.08} className="bg-paper p-8 sm:p-12">
+                  <p className="font-display text-sm text-gold-muted" aria-hidden="true">
                     {editorialIndex(i + 1, locale)}
                   </p>
-                  <h2 className="font-display mt-5 text-2xl font-medium text-ivory sm:text-3xl">
+                  <h2 className="font-display mt-5 text-2xl font-medium text-ink sm:text-3xl">
                     {t(section.title, locale)}
                   </h2>
-                  <p className="font-display mt-6 text-lg font-medium italic leading-relaxed text-ivory-deep">
+                  <p className="font-display mt-6 text-lg font-medium italic leading-relaxed text-ink/85">
                     {t(section.principle, locale)}
                   </p>
-                  <p className="mt-5 text-[0.95rem] leading-[1.85] text-ivory/70">
+                  <p className="mt-5 text-[0.95rem] leading-[1.85] text-ink/70">
                     {t(section.interpretation, locale)}
                   </p>
                   {related && (
-                    <p className="tracking-label mt-7 text-[0.6rem] uppercase text-stone">
+                    <p className="tracking-label mt-7 text-[0.6rem] uppercase text-ink/50">
                       {locale === "bn" ? "সংশ্লিষ্ট অধ্যায়" : "Related chapter"} —{" "}
-                      <span className="text-gold">{t(related.title, locale)}</span>
+                      <span className="text-gold-muted">{t(related.title, locale)}</span>
                     </p>
                   )}
                 </Reveal>

@@ -130,6 +130,47 @@ export const ventures: Venture[] = [
     isPublic: true,
     featured: true,
   },
+  {
+    id: "ecom-easy",
+    slug: "ecom-easy",
+    name: "ECOM-EASY",
+    category: { en: "E-Commerce Venture", bn: "ই-কমার্স উদ্যোগ" },
+    categoryKey: "ecommerce",
+    founderRole: { en: "Founder & Chairman", bn: "প্রতিষ্ঠাতা ও চেয়ারম্যান" },
+    leadership: [
+      {
+        personName: { en: "Krishna Kanta", bn: "Krishna Kanta" },
+        roleTitle: { en: "Founder & Chairman", bn: "প্রতিষ্ঠাতা ও চেয়ারম্যান" },
+        verificationStatus: "editorial",
+      },
+      {
+        personName: { en: "Mr. Hashmi", bn: "Mr. Hashmi" },
+        roleTitle: { en: "CEO, Marketing Sector", bn: "সিইও, মার্কেটিং সেক্টর" },
+        verificationStatus: "editorial",
+      },
+    ],
+    description: {
+      en: "An e-commerce initiative focused on making online commerce simple, dependable, and practical for everyday businesses. Verified company details, history, and milestones will be added through the editorial archive.",
+      bn: "দৈনন্দিন ব্যবসার জন্য অনলাইন বাণিজ্যকে সহজ, নির্ভরযোগ্য ও বাস্তবমুখী করে তুলতে নিবেদিত একটি ই-কমার্স উদ্যোগ। প্রতিষ্ঠানটির যাচাইকৃত তথ্য, ইতিহাস ও মাইলফলক সম্পাদকীয় আর্কাইভের মাধ্যমে যুক্ত করা হবে।",
+    },
+    status: "active",
+    verificationStatus: "editorial",
+    image: {
+      src: "/images/placeholder-venture-ecomeasy.svg",
+      alt: {
+        en: "Editorial placeholder reserved for a verified ECOM-EASY venture image",
+        bn: "ECOM-EASY উদ্যোগের যাচাইকৃত চিত্রের জন্য সংরক্ষিত স্থানচিত্র",
+      },
+      width: 1600,
+      height: 1000,
+      treatment: "mono",
+      isPlaceholder: true,
+      placeholderKind: "venture",
+    },
+    relatedTimelineIds: ["tl-technology"],
+    isPublic: true,
+    featured: true,
+  },
 ];
 
 /** Publicly renderable ventures — never expose private records. */

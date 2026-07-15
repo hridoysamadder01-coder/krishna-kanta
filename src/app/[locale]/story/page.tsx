@@ -70,22 +70,22 @@ export default async function StoryPage({ params }: { params: Promise<{ locale: 
       </section>
 
       {/* Chapters */}
-      <section className="bg-charcoal py-24 sm:py-32">
+      <section className="bg-paper py-24 text-ink sm:py-32">
         <div className="mx-auto max-w-3xl px-5 sm:px-8">
           <ol role="list" className="space-y-20">
             {storyChapters.map((chapter) => (
               <Reveal as="li" key={chapter.id}>
                 <article aria-labelledby={`${chapter.id}-title`}>
-                  <p className="font-display text-sm text-gold" aria-hidden="true">
+                  <p className="font-display text-sm text-gold-muted" aria-hidden="true">
                     {editorialIndex(chapter.index, locale)}
                   </p>
                   <h2
                     id={`${chapter.id}-title`}
-                    className="font-display mt-4 text-[clamp(1.6rem,3.5vw,2.4rem)] font-medium leading-tight text-ivory"
+                    className="font-display mt-4 text-[clamp(1.6rem,3.5vw,2.4rem)] font-medium leading-tight text-ink"
                   >
                     {t(chapter.title, locale)}
                   </h2>
-                  <div className="mt-7 space-y-6 text-[1.02rem] leading-[1.9] text-ivory/75">
+                  <div className="mt-7 space-y-6 text-[1.02rem] leading-[1.9] text-ink/75">
                     {chapter.paragraphs.map((para) => (
                       <p key={para.en.slice(0, 40)}>{t(para, locale)}</p>
                     ))}
@@ -93,6 +93,7 @@ export default async function StoryPage({ params }: { params: Promise<{ locale: 
                   <VerificationBadge
                     status={chapter.verificationStatus}
                     locale={locale}
+                    tone="light"
                     className="mt-6"
                   />
                 </article>
@@ -105,9 +106,10 @@ export default async function StoryPage({ params }: { params: Promise<{ locale: 
       {/* Leadership and people */}
       <LeadershipStorySection locale={locale} withCta={false} />
 
-      <section className="bg-ink py-20">
+      <section className="bg-paper py-20">
         <div className="mx-auto max-w-wide px-5 sm:px-8">
           <CTAGroup
+            tone="light"
             primary={{ href: localePath(locale, "/ventures"), label: t(ui.viewVentures, locale) }}
             secondary={{ href: localePath(locale, "/philosophy"), label: t(ui.discoverPhilosophy, locale) }}
           />

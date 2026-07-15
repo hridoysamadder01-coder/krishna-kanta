@@ -21,6 +21,8 @@ export function Timeline({
   const text = tone === "dark" ? "text-ivory" : "text-ink";
   const muted = tone === "dark" ? "text-ivory/70" : "text-ink/70";
   const line = tone === "dark" ? "border-white/15" : "border-ink/15";
+  const dateColor = tone === "dark" ? "text-gold" : "text-gold-muted";
+  const dotBg = tone === "dark" ? "bg-ink" : "bg-paper";
 
   return (
     <ol className="relative" role="list">
@@ -38,11 +40,11 @@ export function Timeline({
             <div className={`grid gap-4 border-l ${line} pb-14 pl-8 sm:grid-cols-[10rem_1fr] sm:gap-10 sm:pl-12`}>
               <span
                 aria-hidden="true"
-                className="absolute -left-[5px] top-1.5 h-[9px] w-[9px] rounded-full border border-gold bg-ink"
+                className={`absolute -left-[5px] top-1.5 h-[9px] w-[9px] rounded-full border ${tone === "dark" ? "border-gold" : "border-gold-muted"} ${dotBg}`}
               />
               <div>
                 {dateLabel && (
-                  <p className="tracking-label text-[0.65rem] uppercase text-gold">{dateLabel}</p>
+                  <p className={`tracking-label text-[0.65rem] uppercase ${dateColor}`}>{dateLabel}</p>
                 )}
                 <p className={`font-display mt-2 text-sm ${muted}`} aria-hidden="true">
                   {editorialIndex(i + 1, locale)}
@@ -55,7 +57,7 @@ export function Timeline({
                 <p className={`mt-3 max-w-measure text-[0.96rem] leading-[1.8] ${muted}`}>
                   {t(entry.summary, locale)}
                 </p>
-                <VerificationBadge status={entry.verificationStatus} locale={locale} className="mt-4" />
+                <VerificationBadge status={entry.verificationStatus} locale={locale} tone={tone} className="mt-4" />
               </div>
             </div>
           </Reveal>

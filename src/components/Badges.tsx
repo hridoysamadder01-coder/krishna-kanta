@@ -12,28 +12,39 @@ export function VerificationBadge({
   status,
   locale,
   className,
+  tone = "dark",
 }: {
   status: VerificationStatus;
   locale: Locale;
   className?: string;
+  tone?: "dark" | "light";
 }) {
   if (status !== "verified" && status !== "editorial") return null;
   const label = status === "verified" ? ui.verifiedLabel : ui.editorialLabel;
+  const isVerified = status === "verified";
+  const textColor = isVerified
+    ? tone === "dark"
+      ? "text-gold"
+      : "text-gold-muted"
+    : tone === "dark"
+      ? "text-stone"
+      : "text-ink/50";
+  const dotColor = isVerified
+    ? tone === "dark"
+      ? "bg-gold"
+      : "bg-gold-muted"
+    : tone === "dark"
+      ? "bg-stone"
+      : "bg-ink/40";
   return (
     <span
       className={cn(
         "tracking-label inline-flex items-center gap-2 text-[0.62rem] uppercase",
-        status === "verified" ? "text-gold" : "text-stone",
+        textColor,
         className,
       )}
     >
-      <span
-        aria-hidden="true"
-        className={cn(
-          "inline-block h-1 w-1 rounded-full",
-          status === "verified" ? "bg-gold" : "bg-stone",
-        )}
-      />
+      <span aria-hidden="true" className={cn("inline-block h-1 w-1 rounded-full", dotColor)} />
       {t(label, locale)}
     </span>
   );

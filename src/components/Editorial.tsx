@@ -5,19 +5,28 @@ export function SectionLabel({
   children,
   className,
   as: Tag = "p",
+  tone = "dark",
 }: {
   children: React.ReactNode;
   className?: string;
   as?: "p" | "span" | "h2";
+  tone?: "dark" | "light";
 }) {
   return (
     <Tag
       className={cn(
-        "tracking-label flex items-center gap-4 text-[0.7rem] font-medium uppercase text-gold",
+        "tracking-label flex items-center gap-4 text-[0.7rem] font-medium uppercase",
+        tone === "dark" ? "text-gold" : "text-gold-muted",
         className,
       )}
     >
-      <span aria-hidden="true" className="inline-block h-px w-10 shrink-0 bg-gold/60" />
+      <span
+        aria-hidden="true"
+        className={cn(
+          "inline-block h-px w-10 shrink-0",
+          tone === "dark" ? "bg-gold/60" : "bg-gold-muted/60",
+        )}
+      />
       {children}
     </Tag>
   );

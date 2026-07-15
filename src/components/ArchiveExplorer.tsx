@@ -55,8 +55,8 @@ export function ArchiveExplorer({ records, locale }: { records: GalleryRecord[];
               className={cn(
                 "min-h-11 border px-4 py-2 text-[0.72rem] uppercase tracking-[0.14em] transition-colors duration-300",
                 type === f.key
-                  ? "border-gold bg-gold text-ink"
-                  : "border-white/15 text-ivory/70 hover:border-gold/60 hover:text-ivory",
+                  ? "border-gold-muted bg-gold-muted text-paper"
+                  : "border-ink/20 text-ink/70 hover:border-gold-muted hover:text-ink",
               )}
             >
               {f.label[locale] || f.label.en}
@@ -65,7 +65,7 @@ export function ArchiveExplorer({ records, locale }: { records: GalleryRecord[];
         </div>
 
         <div className="w-full md:max-w-xs">
-          <label htmlFor="archive-search" className="tracking-label mb-2 block text-[0.62rem] uppercase text-stone">
+          <label htmlFor="archive-search" className="tracking-label mb-2 block text-[0.62rem] uppercase text-ink/55">
             {locale === "bn" ? "আর্কাইভে খুঁজুন" : "Search the archive"}
           </label>
           <input
@@ -74,16 +74,16 @@ export function ArchiveExplorer({ records, locale }: { records: GalleryRecord[];
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder={locale === "bn" ? "ক্যাপশন, স্থান, বছর…" : "Caption, place, year…"}
-            className="w-full border border-white/15 bg-ink px-4 py-3 text-sm text-ivory placeholder:text-stone/60 focus:border-gold/60"
+            className="w-full border border-ink/20 bg-white px-4 py-3 text-sm text-ink placeholder:text-ink/40 focus:border-gold-muted"
           />
         </div>
       </div>
 
       <div className="mt-12" aria-live="polite">
         {visible.length > 0 ? (
-          <ArchiveGrid records={visible} locale={locale} />
+          <ArchiveGrid records={visible} locale={locale} tone="light" />
         ) : (
-          <p className="border border-white/10 px-8 py-16 text-center text-sm italic text-stone">
+          <p className="border border-ink/10 px-8 py-16 text-center text-sm italic text-ink/50">
             {t(ui.archiveEmptyState, locale)}
           </p>
         )}

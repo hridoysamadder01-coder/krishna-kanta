@@ -82,15 +82,15 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
         }
       />
 
-      <section className="bg-charcoal py-24 sm:py-28">
+      <section className="bg-paper py-24 text-ink sm:py-28">
         <div className="mx-auto max-w-wide px-5 sm:px-8">
           <div className="grid gap-14 lg:grid-cols-12">
             <Reveal className="lg:col-span-5">
               <ul className="space-y-8" role="list">
                 {categories.map((cat) => (
-                  <li key={cat.title} className="border-l border-gold/40 pl-6">
-                    <h2 className="font-display text-xl font-medium text-ivory">{cat.title}</h2>
-                    <p className="mt-2 text-sm leading-[1.8] text-ivory/65">{cat.body}</p>
+                  <li key={cat.title} className="border-l border-gold-muted/50 pl-6">
+                    <h2 className="font-display text-xl font-medium text-ink">{cat.title}</h2>
+                    <p className="mt-2 text-sm leading-[1.8] text-ink/65">{cat.body}</p>
                   </li>
                 ))}
               </ul>

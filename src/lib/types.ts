@@ -92,7 +92,7 @@ export type Venture = {
   name: string;
   nameBn?: string;
   category: LocalisedText;
-  categoryKey: "established-business" | "technology" | "ai" | "future";
+  categoryKey: "established-business" | "technology" | "ai" | "ecommerce" | "future";
   founderRole: LocalisedText;
   leadership: RoleRecord[];
   description: LocalisedText;

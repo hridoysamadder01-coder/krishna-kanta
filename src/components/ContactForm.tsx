@@ -117,21 +117,21 @@ export function ContactForm({ locale }: { locale: Locale }) {
 
   const fieldClass = (hasError: boolean) =>
     cn(
-      "w-full border bg-ink px-4 py-3 text-[0.95rem] text-ivory placeholder:text-stone/60",
-      hasError ? "border-red-400/70" : "border-white/15 focus:border-gold/60",
+      "w-full border bg-white px-4 py-3 text-[0.95rem] text-ink placeholder:text-ink/40",
+      hasError ? "border-red-500/70" : "border-ink/20 focus:border-gold-muted",
     );
 
   const errorText = (id: string, message?: string) =>
     message ? (
-      <p id={id} role="alert" className="mt-2 text-xs text-red-300">
+      <p id={id} role="alert" className="mt-2 text-xs text-red-700">
         {message}
       </p>
     ) : null;
 
   if (status === "success") {
     return (
-      <div role="status" className="border border-gold/40 bg-charcoal px-8 py-12 text-center">
-        <p className="font-display text-xl text-ivory">{tr(copy.success)}</p>
+      <div role="status" className="border border-gold-muted/50 bg-white px-8 py-12 text-center">
+        <p className="font-display text-xl text-ink">{tr(copy.success)}</p>
       </div>
     );
   }
@@ -145,17 +145,17 @@ export function ContactForm({ locale }: { locale: Locale }) {
         className={cn(Object.keys(errors).length === 0 && status !== "failure" && status !== "no-channel" && "sr-only")}
       >
         {Object.keys(errors).length > 0 && (
-          <p className="border border-red-400/40 bg-red-950/30 px-5 py-4 text-sm text-red-200">
+          <p className="border border-red-400 bg-red-50 px-5 py-4 text-sm text-red-800">
             {tr(copy.errorSummary)}
           </p>
         )}
         {status === "failure" && (
-          <p className="border border-red-400/40 bg-red-950/30 px-5 py-4 text-sm text-red-200">
+          <p className="border border-red-400 bg-red-50 px-5 py-4 text-sm text-red-800">
             {tr(copy.failure)}
           </p>
         )}
         {status === "no-channel" && (
-          <p className="border border-gold/40 bg-charcoal px-5 py-4 text-sm leading-relaxed text-ivory/85">
+          <p className="border border-gold-muted/50 bg-white px-5 py-4 text-sm leading-relaxed text-ink/85">
             {tr(copy.noChannel)}
           </p>
         )}
@@ -171,7 +171,7 @@ export function ContactForm({ locale }: { locale: Locale }) {
 
       <div className="grid gap-7 sm:grid-cols-2">
         <div>
-          <label htmlFor="fullName" className="tracking-label mb-2 block text-[0.65rem] uppercase text-ivory/70">
+          <label htmlFor="fullName" className="tracking-label mb-2 block text-[0.65rem] uppercase text-ink/60">
             {tr(copy.fullName)}
           </label>
           <input
@@ -188,7 +188,7 @@ export function ContactForm({ locale }: { locale: Locale }) {
         </div>
 
         <div>
-          <label htmlFor="organisation" className="tracking-label mb-2 block text-[0.65rem] uppercase text-ivory/70">
+          <label htmlFor="organisation" className="tracking-label mb-2 block text-[0.65rem] uppercase text-ink/60">
             {tr(copy.organisation)}
           </label>
           <input
@@ -203,7 +203,7 @@ export function ContactForm({ locale }: { locale: Locale }) {
 
       <div className="grid gap-7 sm:grid-cols-2">
         <div>
-          <label htmlFor="email" className="tracking-label mb-2 block text-[0.65rem] uppercase text-ivory/70">
+          <label htmlFor="email" className="tracking-label mb-2 block text-[0.65rem] uppercase text-ink/60">
             {tr(copy.email)}
           </label>
           <input
@@ -220,7 +220,7 @@ export function ContactForm({ locale }: { locale: Locale }) {
         </div>
 
         <div>
-          <label htmlFor="enquiryType" className="tracking-label mb-2 block text-[0.65rem] uppercase text-ivory/70">
+          <label htmlFor="enquiryType" className="tracking-label mb-2 block text-[0.65rem] uppercase text-ink/60">
             {tr(copy.enquiryType)}
           </label>
           <select
@@ -246,7 +246,7 @@ export function ContactForm({ locale }: { locale: Locale }) {
       </div>
 
       <div>
-        <label htmlFor="message" className="tracking-label mb-2 block text-[0.65rem] uppercase text-ivory/70">
+        <label htmlFor="message" className="tracking-label mb-2 block text-[0.65rem] uppercase text-ink/60">
           {tr(copy.message)}
         </label>
         <textarea
@@ -262,14 +262,14 @@ export function ContactForm({ locale }: { locale: Locale }) {
       </div>
 
       <div>
-        <label className="flex items-start gap-3 text-sm leading-relaxed text-ivory/75">
+        <label className="flex items-start gap-3 text-sm leading-relaxed text-ink/75">
           <input
             type="checkbox"
             name="consent"
             required
             aria-invalid={!!errors.consent}
             aria-describedby={errors.consent ? "err-consent" : undefined}
-            className="mt-1 h-4 w-4 accent-[#b89a5d]"
+            className="mt-1 h-4 w-4 accent-[#8c7448]"
           />
           <span>{tr(copy.consent)}</span>
         </label>
@@ -279,7 +279,7 @@ export function ContactForm({ locale }: { locale: Locale }) {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="inline-flex min-h-11 items-center border border-gold/60 px-8 py-3 text-[0.78rem] uppercase tracking-[0.16em] text-gold transition-colors duration-300 hover:bg-gold hover:text-ink disabled:opacity-50"
+        className="inline-flex min-h-11 items-center border border-gold-muted px-8 py-3 text-[0.78rem] uppercase tracking-[0.16em] text-gold-muted transition-colors duration-300 hover:bg-gold-muted hover:text-paper disabled:opacity-50"
       >
         {status === "sending" ? tr(copy.sending) : tr(copy.submit)}
       </button>

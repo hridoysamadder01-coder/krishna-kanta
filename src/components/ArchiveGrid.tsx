@@ -28,7 +28,9 @@ export function ArchiveGrid({
 
   if (records.length === 0) {
     return (
-      <p className="border border-white/10 px-8 py-16 text-center text-sm italic text-stone">
+      <p
+        className={`border px-8 py-16 text-center text-sm italic ${tone === "dark" ? "border-white/10 text-stone" : "border-ink/10 text-ink/50"}`}
+      >
         {t(ui.archiveEmptyState, locale)}
       </p>
     );
@@ -47,7 +49,9 @@ export function ArchiveGrid({
                 className="group block w-full text-left"
                 aria-label={`${t(record.caption, locale)} — ${locale === "bn" ? "বড় করে দেখুন" : "view larger"}`}
               >
-                <div className="overflow-hidden border border-white/10">
+                <div
+                  className={`overflow-hidden border ${tone === "dark" ? "border-white/10" : "border-ink/15"}`}
+                >
                   <PortraitFigure
                     image={record.image}
                     locale={locale}
@@ -61,7 +65,9 @@ export function ArchiveGrid({
                     {t(record.caption, locale)}
                   </p>
                   {record.year && (
-                    <p className="tracking-label shrink-0 text-[0.6rem] uppercase text-gold">
+                    <p
+                      className={`tracking-label shrink-0 text-[0.6rem] uppercase ${tone === "dark" ? "text-gold" : "text-gold-muted"}`}
+                    >
                       {localiseDigits(record.year, locale)}
                     </p>
                   )}

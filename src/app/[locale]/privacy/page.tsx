@@ -75,12 +75,12 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
             : "This draft is an editable placeholder — it requires review by legal counsel before formal adoption."
         }
       />
-      <section className="bg-charcoal py-20">
+      <section className="bg-paper py-20 text-ink">
         <div className="mx-auto max-w-3xl space-y-12 px-5 sm:px-8">
           {sections.map((s) => (
             <div key={s.title}>
-              <h2 className="font-display text-2xl font-medium text-ivory">{s.title}</h2>
-              <p className="mt-4 text-[0.98rem] leading-[1.9] text-ivory/75">{s.body}</p>
+              <h2 className="font-display text-2xl font-medium text-ink">{s.title}</h2>
+              <p className="mt-4 text-[0.98rem] leading-[1.9] text-ink/75">{s.body}</p>
             </div>
           ))}
         </div>

@@ -38,11 +38,11 @@ export function QuoteBlock({
   }
 
   return (
-    <div className={cn("border-l border-gold/40 pl-8", className)}>
+    <div className={cn("border-l pl-8", dark ? "border-gold/40" : "border-gold-muted/50", className)}>
       <p className={cn("font-display text-2xl font-medium italic leading-relaxed", dark ? "text-ivory-deep" : "text-ink/85")}>
         {t(quote.text, locale)}
       </p>
-      <p className="tracking-label mt-4 text-[0.6rem] uppercase text-stone">
+      <p className={cn("tracking-label mt-4 text-[0.6rem] uppercase", dark ? "text-stone" : "text-ink/45")}>
         {t(ui.editorialLabel, locale)}
       </p>
     </div>
@@ -64,7 +64,9 @@ export function PrincipleBlock({
   const dark = tone === "dark";
   return (
     <div className={className}>
-      <p className="tracking-label text-[0.65rem] uppercase text-gold">{t(ui.principlesLabel, locale)}</p>
+      <p className={cn("tracking-label text-[0.65rem] uppercase", dark ? "text-gold" : "text-gold-muted")}>
+        {t(ui.principlesLabel, locale)}
+      </p>
       <ul className={cn("mt-6 divide-y", dark ? "divide-white/10" : "divide-ink/10")} role="list">
         {principles.map((principle) => (
           <li key={principle.id} className="py-4">

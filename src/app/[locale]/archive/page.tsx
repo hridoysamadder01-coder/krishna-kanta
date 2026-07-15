@@ -56,16 +56,17 @@ export default async function ArchivePage({ params }: { params: Promise<{ locale
         }
       />
 
-      <section className="bg-charcoal py-20 sm:py-28">
+      <section className="bg-paper py-20 text-ink sm:py-28">
         <div className="mx-auto max-w-wide px-5 sm:px-8">
           <Reveal>
-            <p className="mb-10 max-w-2xl text-sm italic leading-relaxed text-stone">
+            <p className="mb-10 max-w-2xl text-sm italic leading-relaxed text-ink/55">
               {t(ui.placeholderFrameNote, locale)}
             </p>
           </Reveal>
           <ArchiveExplorer records={publicGallery} locale={locale} />
           <CTAGroup
             className="mt-16"
+            tone="light"
             primary={{ href: localePath(locale, "/press"), label: t(ui.readRecord, locale) }}
             secondary={{ href: localePath(locale, "/story"), label: t(ui.continueStory, locale) }}
           />

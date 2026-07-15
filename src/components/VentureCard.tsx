@@ -44,10 +44,10 @@ export function VentureCard({
 
       <div className="flex flex-1 flex-col p-7 sm:p-9">
         <div className="flex items-baseline justify-between gap-4">
-          <p className="tracking-label text-[0.62rem] uppercase text-gold">
+          <p className={`tracking-label text-[0.62rem] uppercase ${dark ? "text-gold" : "text-gold-muted"}`}>
             {t(venture.category, locale)}
           </p>
-          <p className="font-display text-sm text-stone" aria-hidden="true">
+          <p className={`font-display text-sm ${dark ? "text-stone" : "text-ink/40"}`} aria-hidden="true">
             {localiseDigits(String(index + 1).padStart(2, "0"), locale)}
           </p>
         </div>
@@ -57,7 +57,9 @@ export function VentureCard({
         </h3>
 
         {venture.foundingYear && (
-          <p className="mt-1 text-xs text-stone">{localiseDigits(venture.foundingYear, locale)}</p>
+          <p className={`mt-1 text-xs ${dark ? "text-stone" : "text-ink/50"}`}>
+            {localiseDigits(venture.foundingYear, locale)}
+          </p>
         )}
 
         <p className={`mt-4 flex-1 text-[0.95rem] leading-[1.8] ${dark ? "text-ivory/70" : "text-ink/70"}`}>
@@ -70,19 +72,19 @@ export function VentureCard({
               <dt className={`text-sm font-medium ${dark ? "text-ivory" : "text-ink"}`}>
                 {t(role.personName, locale)}
               </dt>
-              <dd className="text-xs text-stone">{t(role.roleTitle, locale)}</dd>
+              <dd className={`text-xs ${dark ? "text-stone" : "text-ink/55"}`}>{t(role.roleTitle, locale)}</dd>
             </div>
           ))}
         </dl>
 
         <div className="mt-6 flex items-center justify-between gap-4">
-          <VerificationBadge status={venture.verificationStatus} locale={locale} />
+          <VerificationBadge status={venture.verificationStatus} locale={locale} tone={tone} />
           {venture.websiteUrl && (
             <a
               href={venture.websiteUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="editorial-link inline-flex items-center gap-2 text-xs uppercase tracking-[0.14em] text-gold"
+              className={`editorial-link inline-flex items-center gap-2 text-xs uppercase tracking-[0.14em] ${dark ? "text-gold" : "text-gold-muted"}`}
             >
               {locale === "bn" ? "ওয়েবসাইট" : "Website"}
               <ExternalLink className="h-3 w-3" aria-hidden="true" />

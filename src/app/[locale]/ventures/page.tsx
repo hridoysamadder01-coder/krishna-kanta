@@ -58,22 +58,23 @@ export default async function VenturesPage({ params }: { params: Promise<{ local
         lede={t(home.venturesIntro, locale)}
       />
 
-      <section className="bg-charcoal py-24 sm:py-32">
+      <section className="bg-paper py-24 text-ink sm:py-32">
         <div className="mx-auto max-w-wide px-5 sm:px-8">
-          <ul className="grid gap-8 md:grid-cols-2 xl:grid-cols-3" role="list">
+          <ul className="grid gap-8 md:grid-cols-2" role="list">
             {publicVentures.map((venture, i) => (
-              <VentureCard key={venture.id} venture={venture} locale={locale} index={i} />
+              <VentureCard key={venture.id} venture={venture} locale={locale} index={i} tone="light" />
             ))}
           </ul>
 
           <Reveal className="mt-16">
-            <p className="max-w-3xl border-l border-gold/40 pl-6 text-sm italic leading-[1.8] text-stone">
+            <p className="max-w-3xl border-l border-gold-muted/50 pl-6 text-sm italic leading-[1.8] text-ink/60">
               {disclaimer[locale] || disclaimer.en}
             </p>
           </Reveal>
 
           <CTAGroup
             className="mt-14"
+            tone="light"
             primary={{ href: localePath(locale, "/story"), label: t(ui.readFounderStory, locale) }}
             secondary={{ href: localePath(locale, "/archive"), label: t(ui.enterArchive, locale) }}
           />
