@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Hind_Siliguri, Inter, Tiro_Bangla } from "next/font/google";
+import { Anek_Bangla, Cormorant_Garamond, Hind_Siliguri, Inter } from "next/font/google";
 import { siteConfig } from "@/content/site";
 import "./globals.css";
 
@@ -16,11 +16,11 @@ const body = Inter({
   display: "swap",
 });
 
-// Tiro Bangla: elegant editorial Bengali serif with impeccable conjunct
-// shaping (single 400 weight — headings render it cleanly).
-const displayBn = Tiro_Bangla({
+// Anek Bangla: contemporary Bengali display family (Ek Type) — sharp,
+// stylish headline shapes with true bold weights and clean conjuncts.
+const displayBn = Anek_Bangla({
   subsets: ["bengali"],
-  weight: ["400"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-display-bn",
   display: "swap",
 });
