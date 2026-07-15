@@ -1,5 +1,15 @@
 import type { Locale } from "./i18n";
 
+/**
+ * Prefix a public asset path with the deployment base path.
+ * next/image does not apply basePath to unoptimized static srcs,
+ * so every content-driven image runs through this helper.
+ */
+export function withBasePath(src: string): string {
+  const base = process.env.NEXT_PUBLIC_BASE_PATH || "";
+  return src.startsWith("/") ? `${base}${src}` : src;
+}
+
 /** Minimal class-name joiner. */
 export function cn(...classes: Array<string | false | null | undefined>): string {
   return classes.filter(Boolean).join(" ");

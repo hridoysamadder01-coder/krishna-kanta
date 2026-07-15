@@ -2,7 +2,7 @@ import Image from "next/image";
 import type { ImageAsset } from "@/lib/types";
 import type { Locale } from "@/lib/i18n";
 import { t } from "@/lib/i18n";
-import { cn } from "@/lib/utils";
+import { cn, withBasePath } from "@/lib/utils";
 
 /**
  * The single image component used across the site. Supports focal-point
@@ -36,7 +36,7 @@ export function PortraitFigure({
   return (
     <figure className={cn("relative overflow-hidden", rounded && "rounded-lg", className)}>
       <Image
-        src={image.src}
+        src={withBasePath(image.src)}
         alt={t(image.alt, locale)}
         width={image.width}
         height={image.height}
