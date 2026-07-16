@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Anek_Bangla, Cormorant_Garamond, Hind_Siliguri, Inter } from "next/font/google";
+import { Baloo_Da_2, Cormorant_Garamond, Hind_Siliguri, Inter } from "next/font/google";
 import { siteConfig } from "@/content/site";
 import "./globals.css";
 
@@ -16,11 +16,11 @@ const body = Inter({
   display: "swap",
 });
 
-// Anek Bangla: contemporary Bengali display family (Ek Type) — sharp,
-// stylish headline shapes with true bold weights and clean conjuncts.
-const displayBn = Anek_Bangla({
+// Baloo Da 2: premium rounded Bengali display family — smooth, confident
+// headline letterforms with true bold weights and flawless conjuncts.
+const displayBn = Baloo_Da_2({
   subsets: ["bengali"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["500", "600", "700"],
   variable: "--font-display-bn",
   display: "swap",
 });
