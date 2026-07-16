@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Baloo_Da_2, Cormorant_Garamond, Hind_Siliguri, Inter } from "next/font/google";
+import { Cormorant_Garamond, Hind_Siliguri, Inter, Noto_Serif_Bengali } from "next/font/google";
 import { siteConfig } from "@/content/site";
 import "./globals.css";
 
@@ -16,9 +16,11 @@ const body = Inter({
   display: "swap",
 });
 
-// Baloo Da 2: premium rounded Bengali display family — smooth, confident
-// headline letterforms with true bold weights and flawless conjuncts.
-const displayBn = Baloo_Da_2({
+// Noto Serif Bengali at TRUE bold weights: the "stylish biography" look —
+// full-bodied book-serif headlines that pair with the Cormorant Latin
+// display. Earlier breakage came from letter-spacing + synthetic bold,
+// both of which globals.css now disables for Bengali.
+const displayBn = Noto_Serif_Bengali({
   subsets: ["bengali"],
   weight: ["500", "600", "700"],
   variable: "--font-display-bn",
