@@ -11,8 +11,10 @@ import { MobileMenu } from "./MobileMenu";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 
 /**
- * Global header: transparent over the light hero, settling into a subtle
- * warm paper glass surface once the visitor scrolls.
+ * Global header. The homepage opens on the cinematic dark hero, so at the
+ * top of the homepage the header renders in ivory; once scrolled (or on any
+ * inner page, which opens light) it settles into a warm paper glass surface
+ * with ink text.
  */
 export function SiteHeader({ locale }: { locale: Locale }) {
   const [scrolled, setScrolled] = useState(false);
@@ -26,6 +28,9 @@ export function SiteHeader({ locale }: { locale: Locale }) {
   }, []);
 
   const isActive = (href: string) => pathname.startsWith(localePath(locale, href).slice(0, -1));
+  const isHome = /^\/(en|bn)\/?$/.test(pathname);
+  // True while the header floats over the dark hero.
+  const dark = isHome && !scrolled;
 
   return (
     <header
@@ -42,10 +47,20 @@ export function SiteHeader({ locale }: { locale: Locale }) {
           className="group flex min-w-0 flex-col justify-center"
           aria-label={siteConfig.personName}
         >
-          <span className="font-display text-base font-semibold tracking-[0.18em] text-ink sm:text-lg">
+          <span
+            className={cn(
+              "font-display text-base font-semibold tracking-[0.18em] sm:text-lg",
+              dark ? "text-ivory" : "text-ink",
+            )}
+          >
             KRISHNA&nbsp;KANTA
           </span>
-          <span className="tracking-label hidden text-[0.55rem] uppercase text-ink/50 sm:block">
+          <span
+            className={cn(
+              "tracking-label hidden text-[0.55rem] uppercase sm:block",
+              dark ? "text-ivory/50" : "text-ink/50",
+            )}
+          >
             {t(ui.brandTagline, locale)}
           </span>
         </Link>
@@ -59,7 +74,13 @@ export function SiteHeader({ locale }: { locale: Locale }) {
                 aria-current={isActive(item.href) ? "page" : undefined}
                 className={cn(
                   "editorial-link text-[0.8rem] uppercase tracking-[0.16em]",
-                  isActive(item.href) ? "text-gold-muted" : "text-ink/70 hover:text-ink",
+                  isActive(item.href)
+                    ? dark
+                      ? "text-gold"
+                      : "text-gold-muted"
+                    : dark
+                      ? "text-ivory/75 hover:text-ivory"
+                      : "text-ink/70 hover:text-ink",
                 )}
               >
                 {t(item.label, locale)}
@@ -67,16 +88,21 @@ export function SiteHeader({ locale }: { locale: Locale }) {
             ))}
           </nav>
 
-          <LanguageSwitcher locale={locale} className="hidden lg:flex" />
+          <LanguageSwitcher locale={locale} tone={dark ? "dark" : "light"} className="hidden lg:flex" />
 
           <Link
             href={localePath(locale, "/story")}
-            className="hidden items-center border border-gold-muted px-5 py-2 text-[0.72rem] uppercase tracking-[0.16em] text-gold-muted transition-colors duration-300 hover:bg-gold-muted hover:text-paper xl:inline-flex"
+            className={cn(
+              "hidden items-center border px-5 py-2 text-[0.72rem] uppercase tracking-[0.16em] transition-colors duration-300 xl:inline-flex",
+              dark
+                ? "border-gold/60 text-gold hover:bg-gold hover:text-ink"
+                : "border-gold-muted text-gold-muted hover:bg-gold-muted hover:text-paper",
+            )}
           >
             {t(ui.exploreJourney, locale)}
           </Link>
 
-          <MobileMenu locale={locale} />
+          <MobileMenu locale={locale} triggerTone={dark ? "dark" : "light"} />
         </div>
       </div>
     </header>

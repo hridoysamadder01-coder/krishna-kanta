@@ -15,7 +15,13 @@ import { LanguageSwitcher } from "./LanguageSwitcher";
  * Full-screen editorial mobile menu on warm paper: large typography,
  * scroll lock, escape-to-close, focus management, active page indicator.
  */
-export function MobileMenu({ locale }: { locale: Locale }) {
+export function MobileMenu({
+  locale,
+  triggerTone = "light",
+}: {
+  locale: Locale;
+  triggerTone?: "dark" | "light";
+}) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname() || "";
   const closeRef = useRef<HTMLButtonElement>(null);
@@ -54,7 +60,10 @@ export function MobileMenu({ locale }: { locale: Locale }) {
         aria-expanded={open}
         aria-haspopup="dialog"
         aria-label={t(ui.openMenu, locale)}
-        className="flex h-11 w-11 items-center justify-center text-ink"
+        className={cn(
+          "flex h-11 w-11 items-center justify-center",
+          triggerTone === "dark" ? "text-ivory" : "text-ink",
+        )}
       >
         <Menu className="h-6 w-6" aria-hidden="true" />
       </button>
